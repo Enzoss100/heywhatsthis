@@ -1,0 +1,23 @@
+﻿<div class="page-shell">
+  <header class="hero">
+    <p class="eyebrow">Captured moments</p>
+    <h1>{{ title }}</h1>
+    <p class="subtitle">A quiet place to revisit the days that shaped us.</p>
+  </header>
+
+  <main class="gallery" aria-label="Memory gallery">
+    <article class="memory-card" *ngFor="let memory of memories">
+      <img [src]="memory.image" [alt]="memory.title" />
+
+      <div class="card-body">
+        <div class="meta">
+          <span>{{ memory.date }}</span>
+          <span>{{ memory.location }}</span>
+        </div>
+
+        <h2>{{ memory.title }}</h2>
+        <p>{{ memory.note }}</p>
+      </div>
+    </article>
+  </main>
+</div>
