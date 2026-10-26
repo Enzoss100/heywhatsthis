@@ -1,23 +1,44 @@
-﻿<div class="page-shell">
-  <header class="hero">
-    <p class="eyebrow">Captured moments</p>
+<div class="page-shell">
+  <header class="masthead">
+    <p class="eyebrow">A birthday letter</p>
     <h1>{{ title }}</h1>
-    <p class="subtitle">A quiet place to revisit the days that shaped us.</p>
+    <p class="subtitle">A few words for someone who makes life a little brighter.</p>
   </header>
 
-  <main class="gallery" aria-label="Memory gallery">
-    <article class="memory-card" *ngFor="let memory of memories">
-      <img [src]="memory.image" [alt]="memory.title" />
+  <main class="letter">
+    <article class="birthday-section">
+      <h2>Happy Birthday!</h2>
+      <p class="opening">
+        Today is all about celebrating you: the joy you bring, the memories we’ve made,
+        and all the wonderful moments still waiting around the corner.
+      </p>
+      <figure class="featured-photo">
+        <img [src]="birthdayPhoto.image" [alt]="birthdayPhoto.alt" />
+        <figcaption>{{ birthdayPhoto.caption }}</figcaption>
+      </figure>
+    </article>
 
-      <div class="card-body">
-        <div class="meta">
-          <span>{{ memory.date }}</span>
-          <span>{{ memory.location }}</span>
-        </div>
+    <article class="letter-section" *ngFor="let section of sections">
+      <header class="section-heading">
+        <h2>{{ section.title }}</h2>
+      </header>
 
-        <h2>{{ memory.title }}</h2>
-        <p>{{ memory.note }}</p>
+      <div
+        class="story-moment"
+        *ngFor="let moment of section.moments; let index = index"
+        [class.photo-right]="index % 2 === 1"
+      >
+        <figure class="photo">
+          <img [src]="moment.photo.image" [alt]="moment.photo.alt" loading="lazy" />
+          <figcaption>{{ moment.photo.caption }}</figcaption>
+        </figure>
+        <p>{{ moment.paragraph }}</p>
       </div>
     </article>
+
+    <footer class="letter-footer">
+      <p>With all my love,</p>
+      <span>Always yours</span>
+    </footer>
   </main>
 </div>
